@@ -2,7 +2,6 @@ package com.cg.ab;
 
 import java.util.*;
 
-
 public class AddressBook {
 	private List<Contact> addressBook = new ArrayList<Contact>();
 
@@ -17,6 +16,11 @@ public class AddressBook {
 	public void addContact(Contact contactObj) {
 		addressBook.add(contactObj);
 	}
+
+	public List<Contact> viewContacts() {
+		return addressBook;
+	}
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		AddressBook ab = new AddressBook();
@@ -41,5 +45,12 @@ public class AddressBook {
 		Contact x = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
 		ab.addContact(x);
 		sc.close();
+
+		List<Contact> cl = new ArrayList<Contact>();
+		cl = ab.viewContacts();
+		System.out.println("The Contact in Address Book is: ");
+		for (Contact z : cl) {
+			System.out.println(z);
+		}
 	}
 }
