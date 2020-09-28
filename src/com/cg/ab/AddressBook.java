@@ -10,21 +10,12 @@ public class AddressBook {
 	}
 
 	public List<Contact> getAddressBook() {
+		
 		return this.addressBook;
 	}
 
-	public void addContact(Contact contactObj) {
-		addressBook.add(contactObj);
-	}
-
-	public List<Contact> viewContacts() {
-		return addressBook;
-	}
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		AddressBook ab = new AddressBook();
-		System.out.println("Welcome to Address Book");
+	public void addContact() {
+		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter first name: ");
 		String firstName = sc.nextLine();
 		System.out.println("Enter last name: ");
@@ -42,10 +33,20 @@ public class AddressBook {
 		String phoneNumber = sc.nextLine();
 		System.out.println("Enter email: ");
 		String email = sc.nextLine();
-		Contact x = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-		ab.addContact(x);
+		Contact addedContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+		addressBook.add(addedContact);
 		sc.close();
+	}
 
+	public List<Contact> viewContacts() {
+		return addressBook;
+	}
+
+	public static void main(String[] args) {
+		AddressBook ab = new AddressBook();
+		System.out.println("Welcome to Address Book");
+		ab.addContact();
+		ab.addContact();
 		List<Contact> cl = new ArrayList<Contact>();
 		cl = ab.viewContacts();
 		System.out.println("The Contact in Address Book is: ");
