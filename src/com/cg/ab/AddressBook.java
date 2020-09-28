@@ -2,8 +2,14 @@ package com.cg.ab;
 
 import java.util.*;
 
+//already saving multiple contacts
 public class AddressBook {
 	private List<Contact> addressBook = new ArrayList<Contact>();
+	public String bookname;
+
+	public AddressBook(String name) {
+		bookname = name;
+	}
 
 	public void setAddressBook(List<Contact> m) {
 		this.addressBook = m;
@@ -12,6 +18,31 @@ public class AddressBook {
 	public List<Contact> getAddressBook() {
 
 		return this.addressBook;
+	}
+
+	public String updateContact(Contact a) {
+		int y = -1;
+		for (Contact x : addressBook) {
+			y++;
+			if (x.firstName.equalsIgnoreCase(a.firstName) && x.lastName.equalsIgnoreCase(a.lastName)) {
+				addressBook.remove(y);
+				addressBook.add(y, a);
+			}
+		}
+		if (y == -1)
+			return "No contact found with this name";
+		else
+			return "Contact Updated";
+	}
+
+	public boolean removeContact(String firstName, String lastName) {
+		Contact a = new Contact("", "", "", "", "", 0, "", "");
+		for (Contact x : addressBook) {
+			if (x.firstName.equalsIgnoreCase(firstName) && x.lastName.equalsIgnoreCase(lastName)) {
+				a = x;
+			}
+		}
+		return addressBook.remove(a);
 	}
 
 	public void addContact() {
@@ -58,11 +89,12 @@ public class AddressBook {
 	}
 
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
 		AddressBook ab = new AddressBook();
 		System.out.println("Welcome to Address Book");
 		ab.addContact();
-		System.out.println("Üpdate Contact:\nEnter name and all details:");
+		System.out.println("ï¿½pdate Contact:\nEnter name and all details:");
 		System.out.println("Enter first name: ");
 		String firstName1 = sc.nextLine();
 		System.out.println("Enter last name: ");
@@ -92,5 +124,6 @@ public class AddressBook {
 			System.out.println(z);
 		}
 		sc.close();
+
 	}
 }
