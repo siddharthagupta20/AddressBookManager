@@ -1,7 +1,7 @@
 package com.cg.ab;
 
 import java.util.*;
-
+//already saving multiple contacts
 public class AddressBook {
 	private List<Contact> addressBook = new ArrayList<Contact>();
 
