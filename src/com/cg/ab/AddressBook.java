@@ -66,7 +66,7 @@ public class AddressBook {
 		String email = sc.nextLine();
 		Contact addedContact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
 		addressBook.add(addedContact);
-		sc.close();
+		//sc.close();
 	}
 
 	public List<Contact> viewContacts() {
