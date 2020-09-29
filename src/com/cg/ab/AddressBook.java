@@ -6,6 +6,11 @@ import java.util.*;
 public class AddressBook {
 	private List<Contact> addressBook = new ArrayList<Contact>();
 	public String bookname;
+	
+	public AddressBook() {
+		bookname = "";
+	}
+
 
 	public AddressBook(String name) {
 		bookname = name;
@@ -20,21 +25,7 @@ public class AddressBook {
 		return this.addressBook;
 	}
 
-	public String updateContact(Contact a) {
-		int y = -1;
-		for (Contact x : addressBook) {
-			y++;
-			if (x.firstName.equalsIgnoreCase(a.firstName) && x.lastName.equalsIgnoreCase(a.lastName)) {
-				addressBook.remove(y);
-				addressBook.add(y, a);
-			}
-		}
-		if (y == -1)
-			return "No contact found with this name";
-		else
-			return "Contact Updated";
-	}
-
+	
 	public boolean removeContact(String firstName, String lastName) {
 		Contact a = new Contact("", "", "", "", "", 0, "", "");
 		for (Contact x : addressBook) {
